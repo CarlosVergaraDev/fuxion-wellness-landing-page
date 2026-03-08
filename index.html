@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud y Bienestar | Ingrid Cárdenas FuXion</title>
+    
+    <!-- Google Fonts: Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        grotesk: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        fuxion: {
+                            orange: '#FF6B00',
+                            orangeHover: '#e56000',
+                            green: '#78BE20',
+                            blue: '#0056b3',
+                            dark: '#0B0F19',
+                            card: '#1A1F2E'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fade-in 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.2)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, #0051ff, #78BE20);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            padding-left: 2rem;
+            width: max-content;
+        }
+        
+        .marquee-left { animation: scroll-left 40s linear infinite; }
+        .marquee-right { animation: scroll-right 40s linear infinite; }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); } 
+        }
+        @keyframes scroll-right {
+            0% { transform: translateX(calc(-50% - 1rem)); }
+            100% { transform: translateX(0); } 
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        
+        /* Decorative background patterns */
+        .bg-pattern {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-20">
+                
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 111" class="h-9 w-auto" aria-label="X de FuXion">
+                      <g fill="#008AD0">
+                        <polygon points="0,22 27,62 54,62 27,21" />
+                        <polygon points="85,21 58,21 44,42 58,61" />
+                        <polygon points="54,65 27,65 0,106 27,106" />
+                        <polygon points="57,67 44,85 58,106 85,106" />
+                      </g>
+                    </svg>
+                    
+                    <div class="flex flex-col justify-center">
+                        <span class="font-bold text-lg leading-none tracking-tight text-gray-900">Ingrid Cárdenas</span>
+                        <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider mt-0.5">Distribuidora Autorizada</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">Inicio</a>
+                    <a href="#" onclick="openProfileDrawer(event)" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">Quién soy</a>
+                    <a href="#" onclick="openFuxionInfoDrawer(event)" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">FuXion</a>
+                    <a href="#productos" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">Productos</a>
+                    <a href="#testimonios" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">Testimonios</a>
+                    <a href="#despachos" class="text-gray-600 hover:text-fuxion-orange transition font-semibold text-sm">Despachos</a>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button onclick="openMobileMenu()" class="text-gray-600 hover:text-fuxion-orange focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden bg-pattern">
+        <!-- Modern Background Elements -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-[10%] left-[5%] w-72 h-72 bg-fuxion-orange/10 rounded-full filter blur-[80px] animate-blob"></div>
+            <div class="absolute bottom-[10%] right-[5%] w-96 h-96 bg-fuxion-green/10 rounded-full filter blur-[100px] animate-blob" style="animation-delay: 3s;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_0%,rgba(249,250,251,1)_80%)]"></div>
+            
+            <!-- Floating accent circles -->
+            <div class="absolute top-40 right-[15%] w-12 h-12 border-2 border-fuxion-blue/20 rounded-full animate-float"></div>
+            <div class="absolute bottom-40 left-[10%] w-8 h-8 border-2 border-fuxion-orange/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Content: Texts & Buttons -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 font-bold text-xs mb-6 shadow-sm border border-blue-200">
+                        Distribución Directa FuXion
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 tracking-tighter">
+                        Transforma tu vida <br /> 
+                        y <span class="text-gradient">siente la diferencia</span>.
+                    </h1>
+                    
+                    <p class="text-sm md:text-base text-gray-600 mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        Bebidas funcionales formuladas con ingredientes cuidadosamente seleccionados para apoyar tu bienestar, energía y nutrición diaria.
+                    </p>
+                    
+                    <div class="text-lg md:text-xl font-bold text-fuxion-dark mb-8 min-h-[32px] flex justify-center lg:justify-start whitespace-nowrap overflow-hidden">
+                        <span id="typed-output"></span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-10">
+                        <a href="#" onclick="openJoinDrawer(event)" class="px-8 py-4 rounded-xl bg-fuxion-blue text-white font-bold text-sm hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 text-center w-full sm:w-auto">
+                            Únete a FuXion
+                        </a>
+                        <a href="https://wa.me/573173765079?text=Hola%20Ingrid%2C%20estoy%20visitando%20tu%20p%C3%A1gina%20web%20y%20quisiera%20recibir%20asesor%C3%ADa%20personalizada%20sobre%20los%20productos." target="_blank" class="px-8 py-4 rounded-xl bg-white text-gray-900 border border-gray-200 font-bold text-sm hover:border-gray-400 transition-all shadow-sm transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full sm:w-auto">
+                            <i class="fab fa-whatsapp text-fuxion-green text-lg"></i> Contáctame
+                        </a>
+                    </div>
+
+                    <!-- Redes Sociales en el Banner -->
+                    <div class="flex justify-center lg:justify-start gap-3">
+                        <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all transform hover:scale-110 shadow-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F] transition-all transform hover:scale-110 shadow-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all transform hover:scale-110 shadow-sm"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Content: Image with Enhanced Accents -->
+                <div class="relative w-full max-w-sm mx-auto lg:max-w-md lg:ml-auto order-1 lg:order-2 group">
+                    <!-- Subtle Glow behind image -->
+                    <div class="absolute -inset-10 bg-gradient-to-tr from-fuxion-blue/20 via-fuxion-green/20 to-fuxion-orange/20 rounded-full blur-3xl opacity-60 animate-pulse"></div>
+                    
+                    <!-- Main Image container -->
+                    <div class="relative z-10">
+                        <img src="https://i.ibb.co/6RZ6tsg0/ingc.png" 
+                             alt="Ingrid Cárdenas FuXion" 
+                             class="w-full h-auto relative z-20 transition-transform duration-500 group-hover:scale-[1.02]">
+                        
+                        <!-- Floating Interactive Badge -->
+                        <div onclick="openProfileDrawer(event)" class="cursor-pointer absolute bottom-10 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3 z-30 border border-white/50 transform -rotate-3 transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-2xl hover:border-yellow-200 active:scale-95 group-hover:rotate-0">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-xl">
+                                👋
+                            </div>
+                            <div class="text-left">
+                                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">¡Hola! Soy:</p>
+                                <p class="text-sm font-extrabold text-gray-900">Ingrid Cárdenas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-20 bg-white relative border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-fuxion-orange font-bold tracking-wide uppercase text-[10px] mb-2">Catálogo Exclusivo</h2>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">Nutrición que se nota</h3>
+                <p class="text-xs text-gray-500">Descubre nuestra línea completa de bebidas funcionales diseñadas para optimizar tu salud.</p>
+                
+                <!-- Dropdown Filtro de Categorías -->
+                <div class="relative inline-block text-left mt-6 w-full sm:w-64 mx-auto" id="category-filter-container">
+                    <button type="button" onclick="toggleDropdown()" class="inline-flex justify-between items-center w-full rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-gray-700 shadow-sm hover:border-gray-300 hover:shadow-md focus:outline-none transition-all">
+                        <span id="dropdown-selected-text" class="flex items-center gap-2.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-fuxion-orange to-fuxion-green shadow-sm"></span> Todas las Líneas
+                        </span>
+                        <i class="fas fa-chevron-down text-[10px] text-gray-400"></i>
+                    </button>
+                    <div id="category-dropdown-menu" class="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-20 mt-2 w-full sm:w-[280px] origin-top-right rounded-xl bg-white shadow-xl border border-gray-100 hidden focus:outline-none overflow-hidden transition-all">
+                        <div class="py-1 max-h-[300px] overflow-y-auto custom-scrollbar" role="none" id="dropdown-options">
+                            <!-- Options injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5" id="products-grid"></div>
+            <div id="pagination-container" class="mt-10"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-20 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+        <div class="absolute top-0 left-[-10%] w-[400px] h-[400px] bg-fuxion-orange/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-70"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-fuxion-green/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-70"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10 text-center">
+            <h2 class="text-fuxion-orange font-bold tracking-wide uppercase text-[10px] mb-2">Lo que dice la gente</h2>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">Historias de Transformación</h3>
+        </div>
+
+        <!-- Track 1: Moving Left -->
+        <div class="marquee-container py-2 relative z-10 mb-4">
+            <div class="marquee-content marquee-left" id="track1">
+                <!-- Card 1 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"Desde que empecé a tomar el Prunex y Thermo T3, mi inflamación desapareció. ¡Me siento más ligera y llena de energía todos los días!"</p>
+                        <h4 class="text-gray-900 font-bold text-sm">María Fernanda</h4>
+                        <p class="text-gray-500 text-xs">Cliente Fiel</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"Como deportista, el Vita Xtra T+ es mi salvación. Ya no dependo de energéticas artificiales, esta opción natural me da el impulso perfecto."</p>
+                        <h4 class="text-gray-900 font-bold text-sm">Carlos Ramírez</h4>
+                        <p class="text-gray-500 text-xs">Atleta Amateur</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"Biopro+ Tect ha sido un cambio de juego para mi sistema inmunológico. Ya no me enfermo tan seguido. Excelente producto y servicio."</p>
+                        <h4 class="text-gray-900 font-bold text-sm">Lucía Gómez</h4>
+                        <p class="text-gray-500 text-xs">Mamá Emprendedora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Track 2: Moving Right -->
+        <div class="marquee-container py-2 relative z-10">
+            <div class="marquee-content marquee-right" id="track2">
+                <!-- Card 4 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"El Noxt me ayudó a recuperar mis horas de sueño profundo. Despierto renovado. El sabor es delicioso y el servicio en Barranquilla impecable."</p>
+                        <h4 class="text-gray-900 font-bold text-sm">Andrés Vega</h4>
+                        <p class="text-gray-500 text-xs">Ingeniero de Software</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"La Liquid Fibra cambió mi digestión por completo. Es refrescante y súper efectiva. La atención de la vendedora es 10 de 10."</p>
+                        <h4 class="text-gray-900 font-bold text-sm">Valentina Ríos</h4>
+                        <p class="text-gray-500 text-xs">Diseñadora Gráfica</p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="glass-card w-[350px] md:w-[420px] flex-shrink-0 p-5 rounded-2xl cursor-default hover:-translate-y-1 transition-transform duration-300 flex flex-row gap-4 items-start text-left">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-[3px] border-white shadow-sm flex-shrink-0">
+                    <div>
+                        <div class="flex justify-start text-fuxion-orange mb-2 text-xs gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 font-sans text-sm md:text-sm mb-3 italic leading-relaxed">"Me costaba mucho tomar agua, pero desde que descubrí los tés de FuXion me mantengo hidratado y bajé esos kilitos de más."</p>
+                        <h4 class="text-gray-900 font-bold text-sm">Roberto Silva</h4>
+                        <p class="text-gray-500 text-xs">Comerciante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Despachos -->
+    <section id="despachos" class="py-20 bg-white relative border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-fuxion-orange font-bold tracking-wide uppercase text-[10px] mb-2">Cobertura</h2>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">Entregas Rápidas y Seguras</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 aspect-video lg:aspect-[4/3] bg-gray-100 relative group">
+                    <img src="https://static.vecteezy.com/system/resources/previews/040/165/492/non_2x/map-of-barranquilla-atlantico-colombia-vector.jpg" alt="Mapa Barranquilla" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-fuxion-orange animate-bounce">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-50 text-fuxion-orange flex items-center justify-center text-lg flex-shrink-0">🛵</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base mb-1">Domicilios Locales</h4>
+                            <p class="text-sm text-gray-500">Entregas inmediatas en <b>Barranquilla</b> y su área metropolitana.</p>
+                        </div>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-green-50 text-fuxion-green flex items-center justify-center text-lg flex-shrink-0">📦</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base mb-1">Cobertura Departamental</h4>
+                            <p class="text-sm text-gray-500">Envíos garantizados a todo el departamento del <b>Atlántico</b>.</p>
+                        </div>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg flex-shrink-0">🇨🇴</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-base mb-1">Envíos Nacionales</h4>
+                            <p class="text-sm text-gray-500">Despachamos a toda <b>Colombia</b> mediante transportadoras certificadas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-fuxion-dark py-8 text-center border-t border-gray-800">
+        <p class="text-gray-400 text-[10px] font-medium tracking-widest uppercase">© 2026 Distribuidora Independiente FuXion.</p>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/573173765079?text=Hola%20Ingrid%2C%20tengo%20una%20consulta%20r%C3%A1pida%20sobre%20los%20productos%20FuXion." target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-xl z-40 hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Drawer Modal -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-fuxion-dark/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" onclick="closeDrawer()"></div>
+    <div id="product-drawer" class="fixed inset-y-0 right-0 w-full sm:w-[420px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-500 flex flex-col">
+        <div class="px-5 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+            <div id="drawer-title-container" class="flex items-center gap-3">
+                <h3 id="drawer-title" class="font-extrabold text-gray-900 text-xs uppercase tracking-widest">Detalle</h3>
+            </div>
+            <button onclick="closeDrawer()" class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-gray-500 hover:text-red-500 transition border border-gray-200"><i class="fas fa-times text-xs"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar p-6 bg-white" id="drawer-content"></div>
+        <div class="p-5 border-t border-gray-100 bg-gray-50" id="drawer-footer">
+            <a id="drawer-whatsapp-btn" href="#" target="_blank" class="w-full py-4 rounded-xl bg-fuxion-dark text-white font-bold text-sm text-center flex justify-center items-center gap-2 hover:bg-gray-900 transition shadow-lg transform hover:-translate-y-0.5">
+                <i class="fab fa-whatsapp text-[#25D366] text-lg"></i> <span id="drawer-btn-text">Consultar ahora</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // 1. Initialize Typed.js
+        document.addEventListener('DOMContentLoaded', function() {
+            var typedElement = document.getElementById('typed-output');
+            if (typedElement) {
+                new Typed('#typed-output', {
+                    strings: [
+                        "Más energía", 
+                        "Bienestar diario", 
+                        "Fortalece tus defensas", 
+                        "Equilibrio natural",
+                        "Una vida más activa"
+                    ],
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    backDelay: 2000,
+                    loop: true,
+                    showCursor: true,
+                    cursorChar: '_'
+                });
+            }
+        });
+
+        // 2. Navbar effects
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.querySelector('.absolute').classList.replace('bg-white/80', 'bg-white/95');
+                nav.classList.add('shadow-md');
+            } else {
+                nav.querySelector('.absolute').classList.replace('bg-white/95', 'bg-white/80');
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // 3. Category Mapping
+        const categoryColors = {
+            "Línea Limpieza": { bg: "bg-teal-50", text: "text-teal-600" },
+            "Línea Regenera": { bg: "bg-blue-50", text: "text-blue-600" },
+            "Línea Revitaliza": { bg: "bg-amber-50", text: "text-amber-600" },
+            "Línea Control de Peso": { bg: "bg-red-50", text: "text-red-600" },
+            "Línea Antienvejecimiento": { bg: "bg-pink-50", text: "text-pink-600" },
+            "Línea Inmunológica": { bg: "bg-green-50", text: "text-green-600" },
+            "Línea Vigor Mental": { bg: "bg-indigo-50", text: "text-indigo-600" },
+            "Línea Deportiva": { bg: "bg-slate-100", text: "text-slate-600" },
+            "Línea Gastronómica": { bg: "bg-orange-50", text: "text-orange-600" }
+        };
+
+        // 4. Data
+        const productsRaw = [
+            { 
+                "categoria": "Línea Limpieza", "producto": "Prunex 1", "precio": "$38.700 / $138.100", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_149137_PEQ_28082025_205810_MAIN.jpg",
+                "descripcion": "Exquisito té herbal con sabor a ciruela y guindón. Es la alternativa natural perfecta para realizar una limpieza profunda del colon y aliviar la pesadez estomacal sin molestias ni cólicos. 🍃",
+                "beneficios": ["Estimula el tránsito intestinal saludable. 🚽", "Efecto laxante suave, natural y predecible. ⏱️", "Libera a tu cuerpo de toxinas acumuladas para deshinchar tu abdomen. ✨"],
+                "preparacion": "Disuelve 1 sobre en una taza de agua caliente (180 ml) ☕. Consúmelo justo antes de dormir para ver resultados a la mañana siguiente."
+            },
+            { 
+                "categoria": "Línea Limpieza", "producto": "Flora Liv", "precio": "$46.400 / $165.700", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_149132_PEQ_28082025_205704_MAIN.jpg",
+                "descripcion": "Deliciosa bebida frutal sabor granadilla que aporta más de 10 mil millones de bacterias probióticas vivas para regenerar y equilibrar tu flora intestinal. 🦠",
+                "beneficios": ["Regenera la flora intestinal dañada por malos hábitos o medicamentos. 🌱", "Mejora drásticamente la asimilación de nutrientes. 🍏", "Eleva tus defensas inmunológicas desde el estómago. 🛡️"],
+                "preparacion": "Disuelve 1 sobre en un vaso de agua fría (180 ml) 💧. Ideal para tomar en ayunas o en cualquier momento del día."
+            },
+            { 
+                "categoria": "Línea Limpieza", "producto": "Liquid Fiber", "precio": "$110.400", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147562_PEQ_24012025_222738_MAIN.jpg",
+                "descripcion": "Refresco sabor limón supremamente rico en fibra dietética y prebióticos. Formulado para nutrir tu sistema digestivo y asegurar tu consumo diario de fibra. 🍋",
+                "beneficios": ["Regula el ritmo intestinal de manera natural. 🔄", "Promueve una agradable sensación de saciedad. 😌", "Previene el estreñimiento crónico. 🌟"],
+                "preparacion": "Disuelve 1 sobre en un vaso grande de agua fría 💧. Tómalo junto con tus comidas principales o a media mañana."
+            },
+            { 
+                "categoria": "Línea Limpieza", "producto": "Berry Balance", "precio": "$179.400", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147640_PEQ_08072025_161851_MAIN.jpg",
+                "descripcion": "Poderoso mix de extractos de frutos rojos (Cranberry y Blueberry). Su acción antioxidante está diseñada específicamente para proteger y limpiar tus vías urinarias. 🍒",
+                "beneficios": ["Evita la adhesión de bacterias en el tracto urinario. 🛡️", "Previene infecciones y molestias al orinar. 💧", "Ayuda a equilibrar el pH y evitar la retención de líquidos. ⚖️"],
+                "preparacion": "Disuelve en un vaso de agua fría o al clima 💧. Puedes tomarlo en cualquier momento del día como un refresco."
+            },
+            { 
+                "categoria": "Línea Limpieza", "producto": "Alpha Balance", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147646_PEQ_24012025_222538_MAIN.jpg",
+                "descripcion": "Jugo verde super concentrado y alcalinizante. Contiene espinaca, alfalfa, algas y manzana verde para limpiar tu sangre y oxigenar tu organismo. 🥬",
+                "beneficios": ["Elimina toxinas y metales pesados de tu cuerpo. 🩸", "Equilibra el pH para prevenir enfermedades. ⚖️", "Eleva tus niveles de energía natural. ⚡"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Altamente recomendado para iniciar tu día tomándolo en ayunas."
+            },
+            { 
+                "categoria": "Línea Limpieza", "producto": "Rexet", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147564_PEQ_24012025_234351_MAIN.jpg",
+                "descripcion": "Bebida efervescente sabor a tuna, formulada para proteger, desintoxicar y rehidratar tu hígado. ¡El reset perfecto para tu cuerpo! 🫧",
+                "beneficios": ["Protege el hígado promoviendo su función desintoxicante. 🛡️", "Alivia pesadez y síntomas de resaca (post-excesos). 🥂", "Rehidrata el organismo aportando vitaminas del complejo B. 🌟"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Tómalo apenas despiertes, o antes/después de comidas pesadas o fiestas."
+            },
+            { 
+                "categoria": "Línea Regenera", "producto": "Biopro+Tec", "precio": "$130.500", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_143219_PEQ_11092025_152616_MAIN.jpg",
+                "descripcion": "Batido proteico de altísimo valor biológico enriquecido con calostro bovino (patente Bioprotein+ con Colostrum) que eleva tus defensas al máximo nivel. Sabor vainilla. 🛡️",
+                "beneficios": ["Potencia y blinda tu sistema inmunológico frente a virus. 🦸‍♂️", "Regenera células y tejidos de forma acelerada. 🧬", "Nutrición premium ideal para toda la familia (niños, embarazadas, abuelos). 👨‍👩‍👧"],
+                "preparacion": "Disuelve 1 sobre en un vaso de agua fría o leche vegetal usando un shaker o licuadora 🥤. Tómalo a media mañana o media tarde."
+            },
+            { 
+                "categoria": "Línea Regenera", "producto": "Biopro X Active", "precio": "$151.900", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_146662_PEQ_12082024_164322_MAIN.jpg",
+                "descripcion": "La versión 100% VEGETAL de nuestra proteína inmunológica. Creada a partir de granos germinados, libre de alérgenos y lácteos, para una asimilación perfecta. 🌱",
+                "beneficios": ["Fortalece las defensas naturales sin causar inflamación. 🛡️", "Proteína limpia y de altísima digestibilidad (100% asimilable). 🍏", "Promueve una regeneración celular óptima. 🧬"],
+                "preparacion": "Disuelve en agua fría usando un shaker 🥤. Ideal como complemento nutricional entre comidas principales."
+            },
+            { 
+                "categoria": "Línea Revitaliza", "producto": "Vitaenergía", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_141989_PEQ_08072024_171800_MAIN.jpg",
+                "descripcion": "Refresco multivitamínico con base de maíz morado, aminoácidos y antioxidantes. La dosis perfecta de vitaminas para empezar el día con el pie derecho. ☀️",
+                "beneficios": ["Aporta la base de energía natural que tu cuerpo requiere. 🔋", "Poderoso efecto antioxidante para combatir radicales libres. 🌟", "Revitaliza cuerpo y mente en la rutina diaria. 🧠"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Tómalo por las mañanas para asegurar tu nutrición diaria."
+            },
+            { 
+                "categoria": "Línea Revitaliza", "producto": "Nutraday", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147565_PEQ_18072024_153552_MAIN.jpg",
+                "descripcion": "Nutrición integral en una bebida sabor a fresa. Formulado para llenar los vacíos nutricionales en la dieta de niños y adultos exigentes. 🍓",
+                "beneficios": ["Aporta vitaminas y minerales esenciales (Hierro, Calcio, Zinc). 🍎", "Refuerza el sistema inmunológico general. 🛡️", "Apoya el desarrollo físico y mental óptimo. 📈"],
+                "preparacion": "Disuelve en agua natural o fría 💧. Excelente acompañante para el desayuno o la lonchera."
+            },
+            { 
+                "categoria": "Línea Revitaliza", "producto": "Vita Xtra T+", "precio": "$38.700 / $138.100", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147320_PEQ_08072024_171559_MAIN.jpg",
+                "descripcion": "¡Tu batería portátil! Un poderoso energizante natural a base de maca, té verde y guaraná que te mantendrá activo todo el día sin causar taquicardia ni nerviosismo. 🚀",
+                "beneficios": ["Brinda energía extra y sostenida por horas. ⚡", "Mejora notablemente el rendimiento físico y mental. 🧠", "Disipa la fatiga y el agotamiento crónico. 🔋"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Tómalo apenas despiertes o 20 minutos antes de cualquier actividad exigente."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Thermo T3", "precio": "$38.700 / $138.100", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147318_PEQ_10102025_195117_MAIN.jpg",
+                "descripcion": "El famoso 'Té Quema Grasa'. Una deliciosa combinación de L-Carnitina y tres tipos de té (verde, negro, rojo) que genera un efecto termogénico natural en tu cuerpo. 🔥",
+                "beneficios": ["Acelera el metabolismo para quemar calorías más rápido. 🏃‍♀️", "Transforma la grasa almacenada en energía útil. ⚡", "Ayuda a reducir medidas abdominales y corporales. 📉"],
+                "preparacion": "Disuelve en una taza de agua caliente o un vaso de agua fría ☕/💧. Ideal tomarlo 15 mins antes de entrenar o después de almorzar."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Nocarb-T", "precio": "$38.700 / $138.100", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147316_PEQ_08072024_211909_MAIN.jpg",
+                "descripcion": "Un riquísimo té sabor manzana-canela diseñado para bloquear parcialmente la asimilación de los carbohidratos (harinas, azúcares) que consumes. 🚫🥖",
+                "beneficios": ["Evita que los carbohidratos se conviertan en grasa. 🛡️", "Controla los picos de glucosa y colesterol en sangre. 📉", "Disminuye la ansiedad por comer dulces. 😌"],
+                "preparacion": "Disuelve en una taza de agua caliente ☕. Tómalo justo durante o inmediatamente después de comidas pesadas ricas en harinas."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Biopro + Fit", "precio": "$115.900", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_143218_PEQ_11092025_152757_MAIN.jpg",
+                "descripcion": "Batido proteico premium diseñado para calmar el apetito y apoyar programas de reducción de peso y quema de grasa sin perder tono muscular. 🥗",
+                "beneficios": ["Controla drásticamente la ansiedad y da sensación de saciedad. 😌", "Acelera la quema de grasa gracias a ingredientes activos. 🔥", "Mantiene y tonifica la masa muscular durante la dieta. 💪"],
+                "preparacion": "Mezcla en un shaker con agua fría o leche vegetal 🥤. Excelente reemplazo para cenas ligeras o como merienda."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Biopro X Active Fit", "precio": "$159.400 / $161.300", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_146664_PEQ_27092023_210916_MAIN.jpg",
+                "descripcion": "La proteína 100% vegana definitiva para control de peso. Combina proteínas de granos germinados para mantenerte fit y saludable. 🌱",
+                "beneficios": ["Mantiene tu cuerpo saciado por largas horas. 🍏", "Acelera el metabolismo sin contener lácteos ni soya. ⚡", "Define y protege tu musculatura mientras pierdes grasa. 💪"],
+                "preparacion": "Agita bien en tu shaker con agua bien fría 🥤. Úsalo a media mañana o media tarde para calmar el hambre."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Café & Café Fit", "precio": "$175.900", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_141906_PEQ_05052025_214106_MAIN.jpg",
+                "descripcion": "Disfruta el placer de un buen café gourmet con granos tostados y extracto de café verde puro, diseñado para ayudarte a bajar tallas. ☕",
+                "beneficios": ["Aprovecha el ácido clorogénico para quemar grasa. 🔥", "Ayuda a reducir medidas y calmar el apetito entre comidas. 📉", "Potente efecto antioxidante natural. 🌟"],
+                "preparacion": "Prepáralo como tu café habitual en una taza de agua caliente ☕. Tómalo a media mañana o por la tarde."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Chocolate Fit", "precio": "$97.500", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147079_PEQ_11122023_214953_MAIN.jpg",
+                "descripcion": "¡El sabor del chocolate sin culpas! Una bebida reconfortante que bloquea los excesos y te ayuda en tu proceso de pérdida de peso. 🍫",
+                "beneficios": ["Favorece la reducción sostenida de medidas. 📉", "Controla fuertemente la ansiedad por azúcares y dulces. 😌", "Mejora tu estado de ánimo general. ☀️"],
+                "preparacion": "Disuelve en agua caliente o fría según prefieras ☕/💧. Perfecto como postre o a media tarde."
+            },
+            { 
+                "categoria": "Línea Control de Peso", "producto": "Pack 5/14 Active", "precio": "$438.500", "cantidad": "Caja x 74 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_144168_PEQ_02012024_184043_MAIN.jpg",
+                "descripcion": "Tu reto de transformación: Un programa integral de 14 días con productos específicos, guía de alimentación y ejercicios para lograr resultados reales. 📅",
+                "beneficios": ["Diseñado para ayudarte a perder hasta 5 kilos en 14 días. 📉", "Limpia, nutre y acelera la quema de grasa simultáneamente. 🔥", "Crea nuevos hábitos saludables sostenibles. 🥗"],
+                "preparacion": "Sigue estrictamente la guía de horarios y plan nutricional que viene incluida en el empaque. 📖"
+            },
+            { 
+                "categoria": "Línea Antienvejecimiento", "producto": "Cool Age", "precio": "$172.600", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147560_PEQ_08072024_213313_MAIN.jpg",
+                "descripcion": "El colágeno evolucionado. Una bebida diseñada con péptidos bioactivos y antioxidantes para combatir los signos del envejecimiento desde adentro. ✨",
+                "beneficios": ["Mejora notablemente la elasticidad y firmeza de la piel. 🧖‍♀️", "Fortalece la estructura del cabello y las uñas. 💅", "Previene arrugas y nutre los cartílagos. 🛡️"],
+                "preparacion": "Disuelve en agua fría 💧. Tómalo en cualquier momento del día, idealmente lejos de comidas fuertes."
+            },
+            { 
+                "categoria": "Línea Antienvejecimiento", "producto": "HGH", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147650_PEQ_21022025_203548_MAIN.jpg",
+                "descripcion": "Deliciosa bebida sabor uva oscura (Youth Elixir) con Resveratrol, formulada para estimular la glándula pituitaria y promover la hormona de la juventud. 🧬",
+                "beneficios": ["Facilita un sueño profundo, relajante y reparador. 😴", "Acelera la regeneración celular mientras duermes. 🌟", "Potente acción antioxidante contra el envejecimiento prematuro. 🍇"],
+                "preparacion": "Disuelve en agua fría o tibia 💧. Consúmelo 30 minutos antes de irte a dormir."
+            },
+            { 
+                "categoria": "Línea Antienvejecimiento", "producto": "Passion", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147643_PEQ_08112024_202806_MAIN.jpg",
+                "descripcion": "Bebida funcional sabor a guaraná que actúa como un vigorizante natural, mejorando la circulación y elevando tus niveles de energía íntima. 🔥",
+                "beneficios": ["Aumenta significativamente el vigor físico. 💪", "Mejora la circulación y la dilatación de los vasos sanguíneos. 🩸", "Eleva la libido y el deseo de forma natural en hombres y mujeres. ❤️"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Puedes tomarlo en cualquier momento del día o antes de tus encuentros."
+            },
+            { 
+                "categoria": "Línea Antienvejecimiento", "producto": "Golden FLX", "precio": "$151.900", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147642_PEQ_08072025_165450_MAIN.jpg",
+                "descripcion": "El famoso extracto de la leche dorada. Una fusión antiinflamatoria de cúrcuma orgánica y jengibre para proteger tu sistema óseo y articular. 🦴",
+                "beneficios": ["Alivia dolores articulares y reduce la inflamación. 🌿", "Protege y nutre el cartílago para una mayor movilidad. 🏃‍♂️", "Excelente antioxidante protector general. 🛡️"],
+                "preparacion": "Disuelve como un té en agua tibia o caliente ☕. Tómalo a media tarde o antes de descansar."
+            },
+            { 
+                "categoria": "Línea Antienvejecimiento", "producto": "Probal", "precio": "$172.600", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147641_PEQ_24012025_223335_MAIN.jpg",
+                "descripcion": "Té herbal especializado en el equilibrio del sistema hormonal. A base de soya, luteína y achiote, es perfecto tanto para mujeres como para hombres. ⚖️",
+                "beneficios": ["Alivia dolores menstruales, cólicos y síntomas de la menopausia. 🌸", "Protege la salud de la próstata en hombres adultos. 🛡️", "Previene cambios de humor repentinos. 😌"],
+                "preparacion": "Disuelve en una taza de agua caliente ☕. Tómalo por la noche o en cualquier momento del día."
+            },
+            { 
+                "categoria": "Línea Inmunológica", "producto": "Vera+", "precio": "$46.400 / $179.400", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147645_PEQ_24012025_234157_MAIN.jpg",
+                "descripcion": "Té herbal reconfortante sabor menta con Aloe Vera purificado y patente Wellmune. El guardián supremo de tus vías respiratorias. 🫁",
+                "beneficios": ["Fortalece la resistencia frente a alergias, resfriados y asma. 🤧", "Desinflama y purifica todo el tracto respiratorio. 🌿", "Eleva el recuento de células protectoras inmunológicas. 🛡️"],
+                "preparacion": "Disuelve en agua tibia o caliente ☕. Maravilloso al despertar o antes de dormir."
+            },
+            { 
+                "categoria": "Línea Inmunológica", "producto": "Ganomas Cappuccino", "precio": "$97.500", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147561_PEQ_15112024_220032_MAIN.jpg",
+                "descripcion": "Un cappuccino gourmet extraordinario enriquecido con extracto de Ganoderma Lucidum, el rey de los hongos asiáticos, para tu salud inmunológica. 🍄",
+                "beneficios": ["Actúa como un potente inmunomodulador y antioxidante. 🛡️", "Ayuda a prevenir la degeneración celular (efecto anti-tumoral preventivo). 🧬", "Sabor premium para sustituir el café común. ☕"],
+                "preparacion": "Disuelve el sobre en una taza con agua bien caliente ☕. Disfrútalo como tu café mañanero o vespertino."
+            },
+            { 
+                "categoria": "Línea Vigor Mental", "producto": "ON", "precio": "$31.000 / $110.400", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147563_PEQ_27052024_013351_MAIN.png",
+                "descripcion": "Alimento inteligente para tu cerebro. Una bebida sabor a frutas que mejora la neurotransmisión y disipa rápidamente la fatiga mental. 🧠",
+                "beneficios": ["Aumenta el enfoque, la concentración y la retención (memoria). 📚", "Reduce el agotamiento causado por el estrés intelectual. ⚡", "Estimula la lucidez sin generar nerviosismo. 👁️"],
+                "preparacion": "Disuelve en un vaso de agua fría 💧. Tómalo 15 minutos antes de jornadas intensas de estudio o trabajo."
+            },
+            { 
+                "categoria": "Línea Vigor Mental", "producto": "OFF", "precio": "$39.100 / $151.900", "cantidad": "Caja x 7 sobres / Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147649_PEQ_08072025_150731_MAIN.jpg",
+                "descripcion": "El botón de 'Pausa' de la naturaleza. Bebida relajante con aminoácidos esenciales y Ashwagandha que te ayuda a equilibrar el sistema nervioso central. 🧘‍♀️",
+                "beneficios": ["Disminuye radicalmente los picos de estrés y la ansiedad aguda. 🍃", "No causa somnolencia si se toma de día; ayuda a dormir si se toma de noche. ⚖️", "Favorece la tranquilidad y el buen humor. ☀️"],
+                "preparacion": "Disuelve en agua fría o tibia según prefieras 💧. Tómalo cuando sientas mucha tensión o antes de dormir."
+            },
+            { 
+                "categoria": "Línea Deportiva", "producto": "Pre Sport", "precio": "$151.800", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_146661_PEQ_11122023_213706_MAIN.jpg",
+                "descripcion": "Energía explosiva y preparación muscular. Bebida isotónica con creatina que hidrata y condiciona tu cuerpo para entrenamientos intensos. 🏋️",
+                "beneficios": ["Retrasa la fatiga por la reducción de la acumulación de ácido láctico. ⚡", "Aumenta la resistencia y fuerza muscular durante la rutina. 🚀", "Maximiza el rendimiento deportivo. 🥇"],
+                "preparacion": "Disuelve en agua bien fría 💧. Consúmelo 15 minutos antes de iniciar tu actividad física."
+            },
+            { 
+                "categoria": "Línea Deportiva", "producto": "Post Sport", "precio": "$151.800", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_144955_PEQ_12082024_162928_MAIN.jpg",
+                "descripcion": "La recuperación óptima. Bebida rehidratante con L-Glutamina para reconstruir las fibras dañadas tras el ejercicio extremo. 🔄",
+                "beneficios": ["Acelera el proceso de recuperación muscular post-entrenamiento. 🧬", "Evita y disminuye los dolores o calambres musculares. 🛡️", "Rehidrata y repone electrolitos rápidamente a nivel celular. 💧"],
+                "preparacion": "Disuelve en agua fría 💧. Tómatelo inmediatamente termines de entrenar para sellar la recuperación."
+            },
+            { 
+                "categoria": "Línea Deportiva", "producto": "Biopro + Sport", "precio": "$145.000", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_143968_PEQ_11092025_153132_MAIN.jpg",
+                "descripcion": "El bloque de construcción definitivo. Proteína de altísimo valor biológico enriquecida con aminoácidos BCAAs, diseñada para atletas y deportistas. 🥛",
+                "beneficios": ["Estimula el desarrollo acelerado de la masa muscular magra. 💪", "Recuperación de fibras musculares desgastadas. 🧬", "Tonifica los músculos sin agregar grasa a tu cuerpo. 🏃‍♂️"],
+                "preparacion": "Mezcla en un shaker con agua fría o leche vegetal inmediatamente después de tu entrenamiento 🥤."
+            },
+            { 
+                "categoria": "Línea Deportiva", "producto": "Biopro X Active Sport", "precio": "$167.000", "cantidad": "Caja x 14 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_146666_PEQ_12082024_165510_MAIN.jpg",
+                "descripcion": "La potencia del deporte en versión 100% vegana. Proteínas germinadas libres de lácteos y alérgenos para el desarrollo muscular limpio. 🌱",
+                "beneficios": ["Aumenta y marca la masa muscular con proteína de altísima asimilación. 💪", "Libre de inflamaciones comunes de los sueros de leche. 🛡️", "Ideal para deportistas veganos o intolerantes a la lactosa. 🥗"],
+                "preparacion": "Agita bien en tu shaker con agua fría o leche de almendras 🥤. Úsalo justo al finalizar tu rutina de ejercicios."
+            },
+            { 
+                "categoria": "Línea Gastronómica", "producto": "Probix", "precio": "$138.100", "cantidad": "Caja x 28 sobres", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147570_PEQ_12082024_171419_MAIN.jpg",
+                "descripcion": "Bebida especializada en la salud gástrica. Combate el malestar de la acidez, gastritis e inflamación de la mucosa estomacal con cultivos probióticos. 😌",
+                "beneficios": ["Regenera la mucosa gástrica y alivia la acidez. 🛡️", "Previene el desarrollo de la bacteria H. Pylori. 🦠", "Protege el estómago frente a irritantes. 🥗"],
+                "preparacion": "Disuelve en agua al clima o fría 💧. Puedes consumirlo media hora antes de tus comidas o ante cualquier malestar gástrico."
+            },
+            { 
+                "categoria": "Línea Gastronómica", "producto": "Base Culinaria Amarilla", "precio": "$31.800", "cantidad": "50 gr - 4 porciones", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147445_PEQ_12082024_171824_MAIN.jpg",
+                "descripcion": "Sopa nutricional instantánea. La solución perfecta para una cena rápida, ligera, deliciosa y 100% saludable, repleta de vegetales y vitaminas. 🍲",
+                "beneficios": ["Sustituto ideal para una comida nutritiva baja en calorías. 🥕", "Sacia el hambre aportando fibra de alta calidad. 😌", "Fácil y rápida de preparar en cualquier lugar. ⏱️"],
+                "preparacion": "Vierte el contenido en un plato hondo o taza y agrega agua hirviendo, mezcla bien hasta disolver. 🍜"
+            },
+            { 
+                "categoria": "Línea Gastronómica", "producto": "Base Culinaria Roja", "precio": "$31.800", "cantidad": "50 gr - 4 porciones", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147447_PEQ_12082024_172243_MAIN.jpg",
+                "descripcion": "Sopa nutricional instantánea con base de ingredientes rojos. Nutrición funcional en un plato reconfortante sin excesos de sodio ni conservantes. 🍲",
+                "beneficios": ["Sustituto ideal para una comida nutritiva baja en calorías. 🍅", "Sacia el hambre aportando fibra de alta calidad. 😌", "Fácil y rápida de preparar en cualquier lugar. ⏱️"],
+                "preparacion": "Vierte el contenido en un plato hondo o taza y agrega agua hirviendo, mezcla bien hasta disolver. 🍜"
+            },
+            { 
+                "categoria": "Línea Gastronómica", "producto": "Base Culinaria Verde", "precio": "$31.800", "cantidad": "50 gr - 4 porciones", "imagen": "https://fuxionstorage.blob.core.windows.net/vhdfuxionoffix/newOffix/imageProducts/CO/CO_147449_PEQ_12082024_172518_MAIN.jpg",
+                "descripcion": "Crema verde nutritiva instantánea. Todo el poder de los vegetales concentrados en una sopa caliente, funcional y de exquisito sabor. 🍲",
+                "beneficios": ["Sustituto ideal para una comida nutritiva baja en calorías. 🥦", "Sacia el hambre aportando fibra de alta calidad. 😌", "Fácil y rápida de preparar en cualquier lugar. ⏱️"],
+                "preparacion": "Vierte el contenido en un plato hondo o taza y agrega agua hirviendo, mezcla bien hasta disolver. 🍜"
+            }
+        ];
+
+        // 5. Pagination
+        let currentPage = 1;
+        let itemsPerPage = 6; 
+        let filteredProducts = [...productsRaw];
+
+        function renderProducts(page) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = filteredProducts.slice(start, end);
+
+            paginatedItems.forEach((prod) => {
+                const colors = categoryColors[prod.categoria] || { bg: "bg-gray-100", text: "text-gray-700" };
+                const imgScale = (prod.producto === 'Prunex 1' || prod.producto === 'Flora Liv') ? 'scale-[1.4] group-hover:scale-[1.5]' : 'group-hover:scale-105';
+                
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl p-3 border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex flex-col h-full animate-fade-in" onclick="openProductDrawerByName('${prod.producto}')">
+                        <div class="relative overflow-hidden rounded-xl mb-3 aspect-[4/3] bg-white border border-gray-50 flex items-center justify-center p-2">
+                            <img src="${prod.imagen}" alt="${prod.producto}" class="w-full h-full object-contain transform ${imgScale} transition duration-500">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition duration-300"></div>
+                        </div>
+                        <div class="px-1 flex flex-col flex-grow">
+                            <div class="mb-2"><span class="inline-block px-2 py-1 rounded-md ${colors.bg} ${colors.text} text-[9px] font-bold uppercase tracking-wider">${prod.categoria}</span></div>
+                            <h4 class="text-sm font-bold text-gray-900 tracking-tight leading-tight">${prod.producto}</h4>
+                            <div class="mt-auto pt-3">
+                                <p class="text-[10px] text-gray-500 mb-0.5">${prod.cantidad}</p>
+                                <p class="text-sm font-extrabold text-fuxion-blue mb-3">${prod.precio}</p>
+                            </div>
+                            <div class="flex items-center text-gray-400 group-hover:text-fuxion-orange text-[10px] font-semibold transition-colors mt-auto">
+                                Ver detalles <i class="fas fa-arrow-right ml-1 transform group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const container = document.getElementById('pagination-container');
+            if (totalPages <= 1) { container.innerHTML = ''; return; }
+            let buttons = '';
+            for (let i = 1; i <= totalPages; i++) {
+                if(i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    buttons += `<button onclick="changePage(${i})" class="w-8 h-8 flex items-center justify-center rounded-xl text-xs font-bold transition-all ${currentPage === i ? 'bg-fuxion-blue text-white shadow-md' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-100'}">${i}</button>`;
+                } else if (i === currentPage - 2 || i === currentPage + 2) { buttons += `<span class="text-gray-400 text-xs">...</span>`; }
+            }
+            container.innerHTML = `<div class="flex justify-center items-center gap-2">
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="w-8 h-8 flex items-center justify-center rounded-xl border border-gray-100 disabled:opacity-30"><i class="fas fa-chevron-left text-[10px]"></i></button>
+                ${buttons}
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="w-8 h-8 flex items-center justify-center rounded-xl border border-gray-100 disabled:opacity-30"><i class="fas fa-chevron-right text-[10px]"></i></button>
+            </div>`;
+        }
+
+        function changePage(p) { currentPage = p; renderProducts(p); }
+        
+        // --- Dropdown Filtering Logic ---
+        function toggleDropdown() {
+            document.getElementById('category-dropdown-menu').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const container = document.getElementById('category-filter-container');
+            if (container && !container.contains(event.target)) {
+                document.getElementById('category-dropdown-menu').classList.add('hidden');
+            }
+        });
+
+        function setCategoryFilter(category) {
+            currentPage = 1;
+            if (category === 'all') {
+                filteredProducts = [...productsRaw];
+                document.getElementById('dropdown-selected-text').innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-fuxion-orange to-fuxion-green shadow-sm"></span> Todas las Líneas`;
+            } else {
+                filteredProducts = productsRaw.filter(p => p.categoria === category);
+                const colors = categoryColors[category] || { text: "text-gray-700" };
+                const dotColor = colors.text.replace('text-', 'bg-');
+                document.getElementById('dropdown-selected-text').innerHTML = `<span class="w-2.5 h-2.5 rounded-full ${dotColor} shadow-sm"></span> ${category}`;
+            }
+            document.getElementById('category-dropdown-menu').classList.add('hidden');
+            renderProducts(currentPage);
+        }
+
+        function initDropdown() {
+            const uniqueCategories = [...new Set(productsRaw.map(p => p.categoria))];
+            const dropdownOptions = document.getElementById('dropdown-options');
+            if(!dropdownOptions) return;
+            
+            let html = `<a href="#" onclick="setCategoryFilter('all'); return false;" class="group flex items-center gap-3 px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors border-b border-gray-50"><span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-fuxion-orange to-fuxion-green shadow-sm group-hover:scale-125 transition-transform"></span> Todas las Líneas</a>`;
+            
+            uniqueCategories.forEach(cat => {
+                const colors = categoryColors[cat] || { text: "text-gray-700" };
+                const dotColor = colors.text.replace('text-', 'bg-');
+                html += `<a href="#" onclick="setCategoryFilter('${cat}'); return false;" class="group flex items-center gap-3 px-5 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"><span class="w-2.5 h-2.5 rounded-full ${dotColor} shadow-sm group-hover:scale-125 transition-transform"></span> ${cat}</a>`;
+            });
+            
+            dropdownOptions.innerHTML = html;
+        }
+        initDropdown();
+        renderProducts(currentPage);
+
+        // 6. Drawer Logic
+        const drawer = document.getElementById('product-drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const drawerContent = document.getElementById('drawer-content');
+        const drawerFooter = document.getElementById('drawer-footer');
+
+        function resetDrawerHeader(titleText) {
+            const container = document.getElementById('drawer-title-container');
+            container.innerHTML = `<h3 class="font-extrabold text-gray-900 text-xs uppercase tracking-widest">${titleText}</h3>`;
+        }
+
+        function resetDrawerFooter() {
+            drawerFooter.classList.remove('hidden');
+            drawerFooter.innerHTML = `
+                <a id="drawer-whatsapp-btn" href="#" target="_blank" class="w-full py-4 rounded-xl bg-fuxion-dark text-white font-bold text-sm text-center flex justify-center items-center gap-2 hover:bg-gray-900 transition shadow-lg transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-[#25D366] text-lg"></i> <span id="drawer-btn-text">Consultar ahora</span>
+                </a>
+            `;
+        }
+
+        function openProductDrawerByName(productName) {
+            const prod = productsRaw.find(p => p.producto === productName);
+            if (!prod) return;
+            const colors = categoryColors[prod.categoria] || { bg: "bg-gray-100", text: "text-gray-700" };
+            const modalImgScale = (prod.producto === 'Prunex 1' || prod.producto === 'Flora Liv') ? 'scale-[1.3]' : '';
+            
+            resetDrawerHeader('Ficha Técnica');
+            resetDrawerFooter();
+            document.getElementById('drawer-btn-text').textContent = '¡Lo quiero! Comprar ahora';
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, me interesa adquirir el producto ${prod.producto}. ¿Me podrías dar más detalles para la compra?`)}`;
+
+            let benefitsHTML = prod.beneficios.map(b => `
+                <li class="flex items-start gap-3 text-sm text-gray-700 bg-gray-50/50 p-2.5 rounded-lg border border-gray-100">
+                    <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center text-[10px] shadow-sm">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span class="leading-snug font-medium">${b}</span>
+                </li>
+            `).join('');
+
+            drawerContent.innerHTML = `
+                <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 border border-gray-100 relative bg-white flex items-center justify-center p-6 shadow-sm">
+                     <img src="${prod.imagen}" class="w-full h-full object-contain transform ${modalImgScale}" alt="${prod.producto}">
+                     <div class="absolute top-4 left-4 px-3 py-1.5 rounded-lg ${colors.bg} ${colors.text} text-[10px] font-bold uppercase backdrop-blur-md bg-white/90 shadow-sm border border-white/50">${prod.categoria}</div>
+                </div>
+                
+                <h2 class="text-3xl font-black text-gray-900 mb-2 tracking-tight">${prod.producto}</h2>
+                <div class="flex items-end gap-3 mb-6 border-b border-gray-100 pb-5">
+                    <p class="text-2xl font-extrabold text-fuxion-blue">${prod.precio}</p>
+                    <p class="text-xs text-gray-500 font-semibold border-l border-gray-300 pl-3 mb-1.5">${prod.cantidad}</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-5 mb-6 border border-gray-100 shadow-sm">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">¿Qué es?</h4>
+                    <p class="text-gray-700 leading-relaxed text-sm font-medium">
+                        ${prod.descripcion}
+                    </p>
+                </div>
+                
+                <h4 class="text-sm font-extrabold text-gray-900 mb-3 flex items-center gap-2">
+                    <i class="fas fa-star text-yellow-400 text-lg"></i> Principales Beneficios
+                </h4>
+                <ul class="space-y-2.5 mb-8">
+                    ${benefitsHTML}
+                </ul>
+
+                <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-5 mb-4 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-6xl opacity-10">💧</div>
+                    <h4 class="text-xs font-black text-blue-800 mb-2 uppercase tracking-wider flex items-center gap-2 relative z-10">
+                        <i class="fas fa-blender text-blue-600"></i> Modo de Uso Recomendado
+                    </h4>
+                    <p class="text-sm text-blue-900/80 leading-relaxed font-medium relative z-10">
+                        ${prod.preparacion}
+                    </p>
+                </div>
+            `;
+            showDrawer();
+        }
+
+        function openProfileDrawer(e) {
+            if(e) e.preventDefault();
+            resetDrawerHeader('Sobre Mí');
+            resetDrawerFooter();
+            document.getElementById('drawer-btn-text').textContent = 'Contáctame directamente';
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, leí tu perfil en la web. Me gustaría recibir una asesoría tuya para saber qué productos me recomiendas.`)}`;
+
+            drawerContent.innerHTML = `
+                <div class="flex flex-col items-center text-center mt-2">
+                    <img src="https://i.ibb.co/6RZ6tsg0/ingc.png" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md mb-4 bg-gray-50" alt="Ingrid Cárdenas">
+                    <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Hola, soy Ingrid Cárdenas</h2>
+                    <p class="text-gray-500 font-medium text-[10px] mb-6 uppercase tracking-wider">Distribuidora Autorizada</p>
+                </div>
+                <div class="text-sm text-gray-600 mb-8 leading-relaxed space-y-4">
+                    <p>Mi viaje con FuXion comenzó hace años buscando mejorar mi salud digestiva y niveles de energía. Hoy comparto estos beneficios con cientos de personas.</p>
+                    <p class="font-bold text-gray-800">Estoy aquí para acompañarte en tu proceso de transformation real.</p>
+                </div>
+                <div class="pt-5 border-t border-gray-100">
+                    <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Encuéntrame en:</h4>
+                    <div class="flex justify-center gap-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white transition-all transform hover:scale-105 shadow-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-[#E4405F] hover:text-white transition-all transform hover:scale-105 shadow-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-all transform hover:scale-105 shadow-sm"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            `;
+            showDrawer();
+        }
+
+        function openFuxionInfoDrawer(e) {
+            if(e) e.preventDefault();
+            resetDrawerHeader('Sobre FuXion');
+            resetDrawerFooter();
+            drawerFooter.innerHTML = `
+                <a href="https://fuxion.com/co" target="_blank" class="w-full py-4 rounded-xl bg-fuxion-orange text-white font-bold text-sm text-center flex justify-center items-center gap-2 hover:bg-orange-600 transition shadow-lg transform hover:-translate-y-0.5">
+                    Visitar Sitio Oficial
+                </a>
+            `;
+
+            drawerContent.innerHTML = `
+                <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-gray-100 relative bg-gray-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="Equipo FuXion">
+                    <div class="absolute inset-0 bg-gradient-to-t from-fuxion-dark/90 via-fuxion-dark/30 to-transparent flex items-end p-5">
+                        <h3 class="text-white font-bold text-xl leading-tight">Construye un negocio<br><span class="text-fuxion-green">con propósito</span></h3>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl font-extrabold text-gray-900 mb-2 tracking-tight">El Movimiento de Salud Verdadera 🌱</h2>
+                
+                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                    FuXion es una multinacional de alto crecimiento que fusiona conocimientos milenarios de las culturas andinas, amazónicas y asiáticas con los últimos avances en biotecnología. Nuestro objetivo es llevar bienestar <b>físico, financiero y emocional</b> a miles de familias.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-blue-50 rounded-xl p-3 text-center border border-blue-100">
+                        <p class="text-2xl font-black text-blue-600 mb-0.5">+15</p>
+                        <p class="text-[9px] font-bold text-blue-800 uppercase tracking-wider">Países Operando</p>
+                    </div>
+                    <div class="bg-green-50 rounded-xl p-3 text-center border border-green-100">
+                        <p class="text-2xl font-black text-green-600 mb-0.5">100%</p>
+                        <p class="text-[9px] font-bold text-green-800 uppercase tracking-wider">Clean Label</p>
+                    </div>
+                </div>
+
+                <h3 class="text-base font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    💻 Tu Negocio Digital (Dropshipping)
+                </h3>
+                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                    Al unirte, obtienes tu propia tienda online (E-commerce) lista para operar. Tú recomiendas, tu cliente compra en tu enlace, y <b>FuXion se encarga del cobro y de entregar el producto</b> en la puerta de su casa en cualquier país donde tengamos presencia. ¡Cero dolores de cabeza con inventarios!
+                </p>
+
+                <!-- Lifestyle Image -->
+                <div class="w-full aspect-[21/9] rounded-xl overflow-hidden mb-6 border border-gray-100 relative shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform hover:scale-105 transition duration-700" alt="Trabajo desde casa">
+                </div>
+
+                <h4 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    💰 Beneficios de nuestro Plan ProLev
+                </h4>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-fuxion-orange transition-colors">
+                        <div class="mt-0.5 w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs flex-shrink-0"><i class="fas fa-percent"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Márgenes de Ganancia</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">Gana desde un <b>20% hasta un altísimo 50%</b> de descuento por cada producto que comercialices a través de tu tienda o de forma directa.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-fuxion-orange transition-colors">
+                        <div class="mt-0.5 w-7 h-7 rounded-full bg-fuxion-orange/20 text-fuxion-orange flex items-center justify-center text-xs flex-shrink-0"><i class="fas fa-network-wired"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Ingresos Residuales Multi-Nivel</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">Construye tu propio equipo de distribución global y genera atractivas comisiones por el volumen de ventas de toda tu organización.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-fuxion-orange transition-colors">
+                        <div class="mt-0.5 w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs flex-shrink-0"><i class="fas fa-plane-departure"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Bonos de Estilo de Vida</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">Alcanza rangos de liderazgo y califica para bonos adicionales como el pago de tu automóvil (Bono Auto) y viajes internacionales todo pago.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-fuxion-orange transition-colors">
+                        <div class="mt-0.5 w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs flex-shrink-0"><i class="fas fa-graduation-cap"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Formación Empresarial Gratuita</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">Accede al sistema de capacitación Awake para desarrollar habilidades en ventas, marketing digital, liderazgo y crecimiento personal constante.</p>
+                        </div>
+                    </li>
+                </ul>
+            `;
+            showDrawer();
+        }
+
+        function openJoinDrawer(e) {
+            if(e) e.preventDefault();
+            resetDrawerHeader('Oportunidad de Negocio');
+            resetDrawerFooter();
+            document.getElementById('drawer-btn-text').textContent = 'Quiero unirme a tu equipo';
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, me llamó la atención la oportunidad de negocio con FuXion. Quisiera más información sobre cómo afiliarme a tu equipo.`)}`;
+
+            drawerContent.innerHTML = `
+                <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-gray-100 relative shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform hover:scale-105 transition duration-700" alt="Emprende con FuXion">
+                    <div class="absolute inset-0 bg-gradient-to-t from-fuxion-dark/90 via-fuxion-dark/30 to-transparent flex items-end p-5">
+                        <h3 class="text-white font-bold text-xl leading-tight">Monetiza tu <br><span class="text-fuxion-orange">bienestar</span></h3>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl font-extrabold text-gray-900 mb-2 tracking-tight">Conviértete en Socio 🚀</h2>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                    ¿Te imaginas generar ingresos desde tu celular recomendando salud verdadera? Con el modelo de negocio de <b>FuXion</b>, conviertes tu estilo de vida en una fuente de prosperidad.
+                </p>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-orange-50 rounded-xl p-3 text-center border border-orange-100">
+                        <p class="text-xl font-black text-fuxion-orange mb-0.5">Hasta 50%</p>
+                        <p class="text-[9px] font-bold text-orange-800 uppercase tracking-wider">De Ganancia</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-xl p-3 text-center border border-blue-100">
+                        <p class="text-xl font-black text-blue-600 mb-0.5">14+</p>
+                        <p class="text-[9px] font-bold text-blue-800 uppercase tracking-wider">Países p/ vender</p>
+                    </div>
+                </div>
+
+                <h4 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    🌟 ¿Por qué emprender aquí?
+                </h4>
+                
+                <ul class="space-y-4 mb-6">
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100 shadow-sm"><i class="fas fa-store"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">E-commerce Gratis (Dropshipping)</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Tu propia tienda virtual operativa 24/7. Tú compartes el enlace, el cliente compra y FuXion le envía el producto. ¡Sin manejar inventario!</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0 border border-green-100 shadow-sm"><i class="fas fa-money-bill-wave"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Múltiples Formas de Ganar</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Comisiones semanales por ventas directas, ingresos residuales por crear equipo y bonos extra (viajes, auto, fondo de liderazgo).</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-0.5 w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center flex-shrink-0 border border-pink-100 shadow-sm"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900 mb-1">Acompañamiento y Mentoría</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">No estarás solo(a). Recibirás capacitación paso a paso, estrategias de marketing digital y apoyo constante de nuestra comunidad.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl text-center shadow-sm">
+                    <p class="text-sm font-bold text-gray-800 mb-1">El momento perfecto es AHORA ⏳</p>
+                    <p class="text-xs text-gray-500">Únete a mi equipo hoy y empieza a transformar tu salud física y financiera.</p>
+                </div>
+            `;
+            showDrawer();
+        }
+
+        // Menú Responsive Móvil
+        function openMobileMenu() {
+            const container = document.getElementById('drawer-title-container');
+            container.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 111" class="h-7 w-auto" aria-label="X de FuXion">
+                    <g fill="#008AD0">
+                    <polygon points="0,22 27,62 54,62 27,21" />
+                    <polygon points="85,21 58,21 44,42 58,61" />
+                    <polygon points="54,65 27,65 0,106 27,106" />
+                    <polygon points="57,67 44,85 58,106 85,106" />
+                    </g>
+                </svg>
+                <div class="flex flex-col justify-center">
+                    <span class="font-bold text-[13px] leading-none tracking-tight text-gray-900">Ingrid Cárdenas</span>
+                    <span class="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-0.5">Distribuidora Autorizada</span>
+                </div>
+            `;
+
+            drawerContent.innerHTML = `
+                <div class="flex flex-col mt-2">
+                    <a href="#inicio" onclick="closeDrawer()" class="text-base font-bold text-gray-800 border-b border-gray-100 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">Inicio <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                    <a href="#" onclick="openProfileDrawer(event)" class="text-base font-bold text-gray-800 border-b border-gray-100 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">Quién soy <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                    <a href="#" onclick="openFuxionInfoDrawer(event)" class="text-base font-bold text-gray-800 border-b border-gray-100 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">FuXion <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                    <a href="#productos" onclick="closeDrawer()" class="text-base font-bold text-gray-800 border-b border-gray-100 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">Productos <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                    <a href="#testimonios" onclick="closeDrawer()" class="text-base font-bold text-gray-800 border-b border-gray-100 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">Testimonios <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                    <a href="#despachos" onclick="closeDrawer()" class="text-base font-bold text-gray-800 py-4 flex justify-between items-center active:text-fuxion-orange transition-colors">Despachos <i class="fas fa-chevron-right text-[10px] text-gray-300"></i></a>
+                </div>
+            `;
+
+            drawerFooter.classList.remove('hidden');
+            drawerFooter.innerHTML = `
+                <div class="flex justify-center gap-4 w-full py-1">
+                    <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white transition-all shadow-sm"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#E4405F] hover:text-white transition-all shadow-sm"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-900 hover:text-white transition-all shadow-sm"><i class="fab fa-tiktok"></i></a>
+                </div>
+            `;
+            showDrawer();
+        }
+
+        function showDrawer() { overlay.classList.remove('hidden'); setTimeout(() => { overlay.classList.remove('opacity-0'); drawer.classList.remove('translate-x-full'); }, 10); document.body.style.overflow = 'hidden'; }
+        function closeDrawer() { drawer.classList.add('translate-x-full'); overlay.classList.add('opacity-0'); setTimeout(() => overlay.classList.add('hidden'), 300); document.body.style.overflow = ''; }
+
+        // Marquee duplicate
+        document.querySelectorAll('.marquee-content').forEach(track => { track.innerHTML += track.innerHTML; });
+    </script>
+</body>
+</html>
