@@ -195,7 +195,7 @@
                         <a href="#" onclick="openJoinDrawer(event)" class="px-8 py-4 rounded-xl bg-fuxion-blue text-white font-bold text-sm hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 text-center w-full sm:w-auto">
                             Únete a FuXion
                         </a>
-                        <a href="https://wa.me/573173765079?text=Hola%20Ingrid%2C%20estoy%20visitando%20tu%20p%C3%A1gina%20web%20y%20quisiera%20recibir%20asesor%C3%ADa%20personalizada%20sobre%20los%20productos." target="_blank" class="px-8 py-4 rounded-xl bg-white text-gray-900 border border-gray-200 font-bold text-sm hover:border-gray-400 transition-all shadow-sm transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <a href="https://wa.me/573173765079?text=Hola%20Ingrid.%20Estoy%20visitando%20tu%20pagina%20web%20y%20me%20encantaria%20recibir%20una%20asesoria%20personalizada%20sobre%20los%20productos%20FuXion." target="_blank" class="px-8 py-4 rounded-xl bg-white text-gray-900 border border-gray-200 font-bold text-sm hover:border-gray-400 transition-all shadow-sm transform hover:-translate-y-1 flex items-center justify-center gap-2 w-full sm:w-auto">
                             <i class="fab fa-whatsapp text-fuxion-green text-lg"></i> Contáctame
                         </a>
                     </div>
@@ -220,7 +220,7 @@
                              class="w-full h-auto relative z-20 transition-transform duration-500 group-hover:scale-[1.02]">
                         
                         <!-- Floating Interactive Badge -->
-                        <div onclick="openProfileDrawer(event)" class="cursor-pointer absolute bottom-10 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3 z-30 border border-white/50 transform -rotate-3 transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-2xl hover:border-yellow-200 active:scale-95 group-hover:rotate-0">
+                        <div onclick="openProfileDrawer(event)" class="cursor-pointer absolute bottom-0 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3 z-30 border border-white/50 transform -rotate-3 transition-all duration-300 hover:rotate-0 hover:scale-105 hover:shadow-2xl hover:border-yellow-200 active:scale-95 group-hover:rotate-0">
                             <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-xl">
                                 👋
                             </div>
@@ -412,7 +412,7 @@
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/573173765079?text=Hola%20Ingrid%2C%20tengo%20una%20consulta%20r%C3%A1pida%20sobre%20los%20productos%20FuXion." target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-xl z-40 hover:scale-110 transition-transform">
+    <a href="https://wa.me/573173765079?text=Hola%20Ingrid.%20Vengo%20de%20tu%20pagina%20web%20y%20tengo%20una%20consulta%20rapida%20sobre%20los%20productos%20FuXion." target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-2xl shadow-xl z-40 hover:scale-110 transition-transform">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -829,7 +829,7 @@
             resetDrawerHeader('Ficha Técnica');
             resetDrawerFooter();
             document.getElementById('drawer-btn-text').textContent = '¡Lo quiero! Comprar ahora';
-            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, me interesa adquirir el producto ${prod.producto}. ¿Me podrías dar más detalles para la compra?`)}`;
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid. Estoy interesado/a en adquirir ${prod.producto}. Me podrias dar mas informacion sobre el proceso de compra.`)}`;
 
             let benefitsHTML = prod.beneficios.map(b => `
                 <li class="flex items-start gap-3 text-sm text-gray-700 bg-gray-50/50 p-2.5 rounded-lg border border-gray-100">
@@ -884,7 +884,7 @@
             resetDrawerHeader('Sobre Mí');
             resetDrawerFooter();
             document.getElementById('drawer-btn-text').textContent = 'Contáctame directamente';
-            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, leí tu perfil en la web. Me gustaría recibir una asesoría tuya para saber qué productos me recomiendas.`)}`;
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid. Lei tu perfil en la pagina web y me encantaria recibir una asesoria tuya para saber que productos me recomiendas para mejorar mi bienestar.`)}`;
 
             drawerContent.innerHTML = `
                 <div class="flex flex-col items-center text-center mt-2">
@@ -999,7 +999,7 @@
             resetDrawerHeader('Oportunidad de Negocio');
             resetDrawerFooter();
             document.getElementById('drawer-btn-text').textContent = 'Quiero unirme a tu equipo';
-            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid, me llamó la atención la oportunidad de negocio con FuXion. Quisiera más información sobre cómo afiliarme a tu equipo.`)}`;
+            document.getElementById('drawer-whatsapp-btn').href = `https://wa.me/573173765079?text=${encodeURIComponent(`Hola Ingrid. Me llamo la atencion la oportunidad de negocio con FuXion. Quisiera mas informacion sobre como afiliarme y ser parte de tu equipo.`)}`;
 
             drawerContent.innerHTML = `
                 <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-gray-100 relative shadow-sm">
